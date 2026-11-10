@@ -1,0 +1,19 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run ops/configure.py first}
+      MYSQL_DATABASE: timetable
+      MYSQL_USER: timetable
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Run ops/configure.py first}
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_bin"]
+    ports: ["127.0.0.1:3307:3306"]
+    volumes: ["mysql_data:/var/lib/mysql"]
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+volumes:
+  mysql_data:

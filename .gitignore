@@ -1,0 +1,36 @@
+.env
+app.env
+gateway.token
+.venv/
+__pycache__/
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+backups/
+*.db
+
+# Private configuration
+.env
+.env.*
+app.env
+gateway.token
+secrets.properties
+
+# Python environment and caches
+.venv/
+.venv.backup*/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Frontend dependencies
+node_modules/
+
+# Database backups
+backups/
+*.sql.tmp
+
+# Local logs and temporary files
+*.log
+*.swp
+.DS_Store
